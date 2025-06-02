@@ -4,10 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3b9af99d-5181-46a6-88bb-5b679dc02531" name="Changes" comment="Put everything in an App class, next add timer in go()">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/main.py" afterDir="false" />
-    </list>
+    <list default="true" id="3b9af99d-5181-46a6-88bb-5b679dc02531" name="Changes" comment="Implemented go(self), update_countdown(self), clear_window(self), needs polish and breaks now." />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -84,12 +81,21 @@
       <option name="project" value="LOCAL" />
       <updated>1748616566581</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="Implemented go(self), update_countdown(self), clear_window(self), needs polish and breaks now.">
+      <option name="closed" value="true" />
+      <created>1748789662668</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1748789662668</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Making a windows themed work timer" />
     <MESSAGE value="Put everything in an App class, next add timer in go()" />
-    <option name="LAST_COMMIT_MESSAGE" value="Put everything in an App class, next add timer in go()" />
+    <MESSAGE value="Implemented go(self), update_countdown(self), clear_window(self), needs polish and breaks now." />
+    <option name="LAST_COMMIT_MESSAGE" value="Implemented go(self), update_countdown(self), clear_window(self), needs polish and breaks now." />
   </component>
 </project>

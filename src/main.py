@@ -69,12 +69,12 @@ class App(ctk.CTk):
 
     def update_countdown(self):
         if self.remaining_time > 0:
-            # 1. Display current time
+            # Display current time
             mins, secs = divmod(self.remaining_time, 60)
             self.timer_label.configure(text=f"{mins:02d}:{secs:02d}")
-            # 2. Decrement time
+            # Decrement time
             self.remaining_time -= 1
-            # 3. Reschedule THIS function for the next second
+            # Reschedule THIS function for the next second
             self.timer_after_id = self.after(1000, self.update_countdown)
         else:
             # Time is up: Perform final action
