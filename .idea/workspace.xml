@@ -4,9 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3b9af99d-5181-46a6-88bb-5b679dc02531" name="Changes" comment="Implemented go(self), update_countdown(self), clear_window(self), needs polish and breaks now.">
+    <list default="true" id="3b9af99d-5181-46a6-88bb-5b679dc02531" name="Changes" comment="Messed it up big time after adding too much need to commit more so I don't rely on undo or chatgpt to fix when I colossaly fuck up.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/interval.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/interval.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/interval.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -36,19 +36,19 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "ASKED_SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "ModuleVcsDetector.initialDetectionPerformed": "true",
-    "Python.interval.executor": "Run",
-    "Python.main.executor": "Run",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "git-widget-placeholder": "master",
-    "ignore.virus.scanning.warn.message": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ASKED_SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
+    &quot;Python.interval.executor&quot;: &quot;Run&quot;,
+    &quot;Python.main.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
+    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\charl\Documents\Projects\Python\work-interval-app\src" />
@@ -101,13 +101,22 @@
       <option name="project" value="LOCAL" />
       <updated>1748878686018</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="Messed it up big time after adding too much need to commit more so I don't rely on undo or chatgpt to fix when I colossaly fuck up.">
+      <option name="closed" value="true" />
+      <created>1748970140741</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1748970140741</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Making a windows themed work timer" />
     <MESSAGE value="Put everything in an App class, next add timer in go()" />
     <MESSAGE value="Implemented go(self), update_countdown(self), clear_window(self), needs polish and breaks now." />
-    <option name="LAST_COMMIT_MESSAGE" value="Implemented go(self), update_countdown(self), clear_window(self), needs polish and breaks now." />
+    <MESSAGE value="Messed it up big time after adding too much need to commit more so I don't rely on undo or chatgpt to fix when I colossaly fuck up." />
+    <option name="LAST_COMMIT_MESSAGE" value="Messed it up big time after adding too much need to commit more so I don't rely on undo or chatgpt to fix when I colossaly fuck up." />
   </component>
 </project>
