@@ -4,9 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3b9af99d-5181-46a6-88bb-5b679dc02531" name="Changes" comment="Added:&#10;&#10;    typing accessibility instead of just sliders">
+    <list default="true" id="3b9af99d-5181-46a6-88bb-5b679dc02531" name="Changes" comment="Added:&#10;&#10;    Task View">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/data_manager.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/data_manager.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/interval.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/interval.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -56,7 +55,8 @@
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "git-widget-placeholder": "master",
     "ignore.virus.scanning.warn.message": "true",
-    "last_opened_file_path": "C:/Users/charl/Documents/Projects/Python/work-interval-app/static"
+    "last_opened_file_path": "C:/Users/charl/Documents/Projects/Python/work-interval-app/static",
+    "settings.editor.selected.configurable": "configurable.group.language"
   }
 }]]></component>
   <component name="RecentsManager">
@@ -162,7 +162,15 @@
       <option name="project" value="LOCAL" />
       <updated>1749609714482</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="Added:&#10;&#10;    Task View">
+      <option name="closed" value="true" />
+      <created>1749610386018</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1749610386018</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -175,6 +183,7 @@
     <MESSAGE value="Added:&#10;&#10;    total number of breaks and work cycles, total number of &#10;    minutes worked and on break.&#10;    Github Style Commit Grid showing every day for some months, &#10;    shading key by number of intervals / cycles in a day. A proper home page &#10;    should be made, which takes you to the current configure page whe&#10;    n you click start." />
     <MESSAGE value="Added:&#10;&#10;    sound to play between cycles ends" />
     <MESSAGE value="Added:&#10;&#10;    typing accessibility instead of just sliders" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added:&#10;&#10;    typing accessibility instead of just sliders" />
+    <MESSAGE value="Added:&#10;&#10;    Task View" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added:&#10;&#10;    Task View" />
   </component>
 </project>

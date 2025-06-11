@@ -70,13 +70,26 @@ class App(ctk.CTk):
         self.create_home_window()
         self.mainloop()
 
+    def _toggle_task_visibility(self, tasks_frame, header_button):
+        """Shows or hides a frame containing tasks and updates the header button text."""
+        if tasks_frame.winfo_viewable():
+            tasks_frame.pack_forget()
+            current_text = header_button.cget("text")
+            new_text = current_text.replace("[-]", "[+]", 1)
+            header_button.configure(text=new_text)
+        else:
+            tasks_frame.pack(fill="x", padx=20, pady=(0, 10), after=header_button)
+            current_text = header_button.cget("text")
+            new_text = current_text.replace("[+]", "[-]", 1)
+            header_button.configure(text=new_text)
+
     def create_tasks_page(self):
         self.clear_window()
         self.geometry('550x450')
 
         ctk.CTkLabel(self, text="Task History", font=("Liberation Mono", 22, "bold")).pack(pady=10)
 
-        scrollable_frame = ctk.CTkScrollableFrame(self, label_text="Recorded Tasks")
+        scrollable_frame = ctk.CTkScrollableFrame(self)
         scrollable_frame.pack(fill="both", expand=True, padx=20, pady=10)
 
         tasks_data = data_manager.load_data()
@@ -85,23 +98,32 @@ class App(ctk.CTk):
         if not sorted_dates:
             ctk.CTkLabel(scrollable_frame, text="No tasks recorded yet.").pack(pady=20)
         else:
-            for task_date_str in sorted_dates:
-                date_header = ctk.CTkLabel(scrollable_frame, text=task_date_str,
-                                           font=("Liberation Mono", 16, "bold"))
-                date_header.pack(fill="x", pady=(10, 5), padx=10)
+            for date_str in sorted_dates:
+                day_entry = tasks_data[date_str]
+                if isinstance(day_entry, list):
+                    total_tasks = len(day_entry)
+                    total_duration = sum(task.get("duration", 0) for task in day_entry)
+                    total_duration_str = self.convert_hours_mins_secs(total_duration)
+                    header_text = f"[+] {date_str} - {total_tasks} tasks ({total_duration_str})"
+                elif isinstance(day_entry, int):
+                    header_text = f"[+] {date_str} - {day_entry} legacy tasks"
+                else:
+                    continue
 
-                day_entry = tasks_data[task_date_str]
+                header_button = ctk.CTkButton(scrollable_frame, text=header_text, anchor="w")
+                header_button.pack(fill="x", pady=(5, 1))
+
+                tasks_frame = ctk.CTkFrame(scrollable_frame, fg_color="transparent")
+                header_button.configure(
+                    command=lambda f=tasks_frame, b=header_button: self._toggle_task_visibility(f, b))
+
                 if isinstance(day_entry, list):
                     for task in day_entry:
                         task_name = task.get("task", "Untitled Task")
                         duration_str = self.convert_hours_mins_secs(task.get("duration", 0))
                         task_label_text = f"  - {task_name}  ({duration_str})"
-                        task_label = ctk.CTkLabel(scrollable_frame, text=task_label_text, anchor="w")
+                        task_label = ctk.CTkLabel(tasks_frame, text=task_label_text, anchor="w")
                         task_label.pack(fill="x", padx=20)
-                elif isinstance(day_entry, int):
-                    task_label_text = f"  - Completed {day_entry} legacy cycle(s)"
-                    task_label = ctk.CTkLabel(scrollable_frame, text=task_label_text, anchor="w")
-                    task_label.pack(fill="x", padx=20)
 
         ctk.CTkButton(self, text="Back to Home", command=self.create_home_window).pack(pady=10)
 
@@ -147,7 +169,7 @@ class App(ctk.CTk):
         self.work_time_entry.pack(pady=(5, 5))
         work_slider = ctk.CTkSlider(self, from_=5, to=7200, variable=self.work_time_var, width=200,
                                     command=lambda v: self._update_entry_from_slider(self.work_time_var,
-                                                                                       self.work_time_entry))
+                                                                                     self.work_time_entry))
         work_slider.pack(padx=100, pady=5)
         self._update_entry_from_slider(self.work_time_var, self.work_time_entry)
         self.work_time_entry.bind("<Return>",
@@ -159,7 +181,7 @@ class App(ctk.CTk):
         self.break_time_entry.pack(pady=(5, 5))
         break_slider = ctk.CTkSlider(self, from_=5, to=7200, variable=self.break_time_var, width=200,
                                      command=lambda v: self._update_entry_from_slider(self.break_time_var,
-                                                                                        self.break_time_entry))
+                                                                                      self.break_time_entry))
         break_slider.pack(padx=20, pady=5)
         self._update_entry_from_slider(self.break_time_var, self.break_time_entry)
         self.break_time_entry.bind("<Return>",
@@ -189,7 +211,7 @@ class App(ctk.CTk):
         main_frame = ctk.CTkFrame(self)
         main_frame.pack(pady=20, padx=20, fill="both", expand=True)
 
-        ctk.CTkLabel(main_frame, text="Contribution Heatmap", font=("Liberation Mono", 18, "bold")).pack(pady=(0, 10))
+        ctk.CTkLabel(main_frame, text="Work Cycle Heatmap", font=("Liberation Mono", 18, "bold")).pack(pady=(0, 10))
 
         heatmap_frame = ctk.CTkFrame(main_frame)
         heatmap_frame.pack(pady=5)
@@ -199,8 +221,10 @@ class App(ctk.CTk):
         stats_frame.pack(pady=20)
         ctk.CTkLabel(stats_frame, text="Current Session Stats", font=("Liberation Mono", 16, "bold")).pack()
         ctk.CTkLabel(stats_frame, text=f"Completed Cycles: {self.session_cycles}").pack()
-        ctk.CTkLabel(stats_frame, text=f"Total Work Time: {self.convert_hours_mins_secs(self.session_work_seconds)}").pack()
-        ctk.CTkLabel(stats_frame, text=f"Total Break Time: {self.convert_hours_mins_secs(self.session_break_seconds)}").pack()
+        ctk.CTkLabel(stats_frame,
+                     text=f"Total Work Time: {self.convert_hours_mins_secs(self.session_work_seconds)}").pack()
+        ctk.CTkLabel(stats_frame,
+                     text=f"Total Break Time: {self.convert_hours_mins_secs(self.session_break_seconds)}").pack()
 
         ctk.CTkButton(self, text="Back to Home", command=self.create_home_window).pack(pady=(0, 20))
 
@@ -285,7 +309,7 @@ class App(ctk.CTk):
         self.remaining_time = int(self.work_time_var.get())
 
         ctk.CTkLabel(self, text="Work Session", font=("Liberation Mono", 18)).pack(pady=(20, 0))
-        ctk.CTkLabel(self, text="What are you working on? (Optional)").pack(pady=(10, 2))
+        ctk.CTkLabel(self, text="What are you working on? (You Can Leave this blank)").pack(pady=(10, 2))
         self.task_name_entry = ctk.CTkEntry(self, placeholder_text="e.g., Design new logo")
         self.task_name_entry.pack(pady=(0, 10), padx=20, fill="x")
 
@@ -299,6 +323,7 @@ class App(ctk.CTk):
 
         self.update_countdown(self.show_break_transition)
 
+    # --- THIS METHOD IS NOW FIXED ---
     def show_break_transition(self):
         work_duration = int(self.work_time_var.get())
         task_name = self.task_name_entry.get()
@@ -310,10 +335,16 @@ class App(ctk.CTk):
         self.session_work_seconds += work_duration
 
         self.clear_window()
-        transition_label = ctk.CTkLabel(self, text="Great work! Time for a break.", font=("Liberation Mono", 18))
+        transition_label = ctk.CTkLabel(self,
+                                        text="Great work, maybe not.\n \nEither way, it’s time to stop.\n \nTake a little break.",
+                                        font=("Liberation Mono", 18))
         transition_label.pack(pady=30)
-        self.after(2000, lambda: transition_label.configure(text="Starting Break Timer . . ."))
-        self.after(3000, self.start_break)
+
+        # This is the corrected sequence:
+        # 1. After 3 seconds, update the text.
+        self.after(6000, lambda: transition_label.configure(text="Starting Break Timer . . ."))
+        # 2. After a total of 4 seconds, start the break. This gives the user time to see the new text.
+        self.after(7000, self.start_break)
 
     def start_break(self):
         self.clear_window()
