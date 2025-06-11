@@ -1,6 +1,7 @@
 import json
 from datetime import date
 
+# This will be overwritten by interval.py to ensure the correct path is used
 DATA_FILE = "cycle_data.json"
 
 
@@ -30,7 +31,7 @@ def increment_today_cycle_count():
     Increments the cycle count for the current day.
     Loads the data, updates the count for today, and saves it back.
     """
-    today_str = date.today().isoformat()  # Gets date in "YYYY-MM-DD" format
+    today_str = date.today().isoformat()
     data = load_data()
 
     current_count = data.get(today_str, 0)
