@@ -4,9 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3b9af99d-5181-46a6-88bb-5b679dc02531" name="Changes" comment="Messed it up big time after adding too much need to commit more so I don't rely on undo or chatgpt to fix when I colossaly fuck up.">
+    <list default="true" id="3b9af99d-5181-46a6-88bb-5b679dc02531" name="Changes" comment="Added, sliders that show value in gui, break time and work time complete, todo at top of page.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/interval.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/interval.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -109,7 +109,15 @@
       <option name="project" value="LOCAL" />
       <updated>1748970140741</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="Added, sliders that show value in gui, break time and work time complete, todo at top of page.">
+      <option name="closed" value="true" />
+      <created>1748996459873</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1748996459873</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -117,6 +125,7 @@
     <MESSAGE value="Put everything in an App class, next add timer in go()" />
     <MESSAGE value="Implemented go(self), update_countdown(self), clear_window(self), needs polish and breaks now." />
     <MESSAGE value="Messed it up big time after adding too much need to commit more so I don't rely on undo or chatgpt to fix when I colossaly fuck up." />
-    <option name="LAST_COMMIT_MESSAGE" value="Messed it up big time after adding too much need to commit more so I don't rely on undo or chatgpt to fix when I colossaly fuck up." />
+    <MESSAGE value="Added, sliders that show value in gui, break time and work time complete, todo at top of page." />
+    <option name="LAST_COMMIT_MESSAGE" value="Added, sliders that show value in gui, break time and work time complete, todo at top of page." />
   </component>
 </project>
