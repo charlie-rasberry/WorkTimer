@@ -6,36 +6,41 @@ DATA_FILE = "cycle_data.json"
 
 
 def load_data():
-    """
-    Loads cycle data from the JSON file.
-    If the file doesn't exist, returns an empty dictionary.
-    """
+    """ Loads cycle data from the JSON file. """
     try:
         with open(DATA_FILE, 'r') as f:
             return json.load(f)
     except (FileNotFoundError, json.JSONDecodeError):
-        # Handle cases where the file doesn't exist, is empty, or corrupted
         return {}
 
 
 def save_data(data):
-    """
-    Saves the given data dictionary to the JSON file.
-    """
+    """ Saves the given data dictionary to the JSON file. """
     with open(DATA_FILE, 'w') as f:
         json.dump(data, f, indent=4)
 
 
-def increment_today_cycle_count():
-    """
-    Increments the cycle count for the current day.
-    Loads the data, updates the count for today, and saves it back.
-    """
+def add_task_entry(task_name, duration_seconds):
+    """ Adds a new task with its duration to today's entry in the JSON file. """
     today_str = date.today().isoformat()
     data = load_data()
 
-    current_count = data.get(today_str, 0)
-    data[today_str] = current_count + 1
+    tasks_or_count = data.get(today_str)
 
+    if isinstance(tasks_or_count, int):
+        print(f"Migrating old data for {today_str}...")
+        day_tasks = [{"task": "Legacy Task", "duration": 0} for _ in range(tasks_or_count)]
+    elif isinstance(tasks_or_count, list):
+        day_tasks = tasks_or_count
+    else:
+        day_tasks = []
+
+    new_task = {
+        "task": task_name,
+        "duration": duration_seconds
+    }
+    day_tasks.append(new_task)
+
+    data[today_str] = day_tasks
     save_data(data)
-    print(f"Cycle count for {today_str} updated to: {data[today_str]}")
+    print(f"Added task '{task_name}' for {today_str}")
